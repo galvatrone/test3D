@@ -1,0 +1,29 @@
+[
+  {
+    "id": "vector",
+    "title": "Vector",
+    "kind": "Drone fleet platform",
+    "summary": "Landing pages and a mission control preview for an autonomous drone delivery pilot in Cyprus.",
+    "image": "projects/vector.webp",
+    "href": "https://www.oneix.ltd/drone/",
+    "tint": "#3ecf8e"
+  },
+  {
+    "id": "lelp",
+    "title": "LELP",
+    "kind": "Lunar logistics concept",
+    "summary": "An electromagnetic launch platform on the Moon, presented as an interactive Three.js site.",
+    "image": "projects/lelp.webp",
+    "href": "https://www.oneix.ltd/lelp/",
+    "tint": "#ff6a3d"
+  },
+  {
+    "id": "dental",
+    "title": "Dental & Orthodontic Center",
+    "kind": "Clinic website",
+    "summary": "A 192-frame 3D tooth that turns as you scroll, built with GSAP ScrollTrigger and Lenis.",
+    "image": "projects/dental.webp",
+    "href": "https://3-d-dantis.vercel.app/",
+    "tint": "#7da7ff"
+  }
+]

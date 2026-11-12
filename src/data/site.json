@@ -1,0 +1,18 @@
+{
+  "name": "Mihail Charilaou",
+  "role": "Engineer building autonomous drones, 3D web and offline AI",
+  "location": "Nicosia, Cyprus",
+  "intro": "Scroll to fly through recent work. The head is built from cubes, one for each pixel of a depth map.",
+  "email": "michaelok929@gmail.com",
+  "links": [
+    { "label": "Website", "href": "https://www.oneix.ltd" },
+    { "label": "GitHub", "href": "https://github.com/galvatrone" },
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/mihail-charilaou-b39586351" }
+  ],
+  "sections": {
+    "gallery": { "title": "Selected work", "text": "Three projects, each with a live prototype you can open." },
+    "tunnel": { "title": "Built for the field", "text": "Most of my work runs on drones, edge boards and laptops without a network, so it has to be fast and keep working when conditions are bad." },
+    "beam": { "title": "From sketch to a working prototype", "text": "I take an idea from a whiteboard to something you can open, fly or test, usually in weeks rather than months." },
+    "contact": { "title": "Let's talk about your next project", "text": "Tell me what you are building and I will reply within two working days." }
+  }
+}
