@@ -17,6 +17,7 @@ uniform vec2 uBurst;       // click point on the portrait plane
 uniform float uBurstAge;   // seconds since the click (large = no burst)
 uniform float uSize;
 uniform float uPixelRatio;
+uniform float uMaxSize;
 
 varying vec4 vCol;
 varying float vGlow;
@@ -58,7 +59,7 @@ void main() {
   vec4 mv = modelViewMatrix * vec4(p, 1.0);
   gl_Position = projectionMatrix * mv;
   float size = uSize * (0.75 + aRand * 0.5) * (1.0 + wave * 1.5 + (1.0 - a) * 0.6);
-  gl_PointSize = col.a < 0.5 ? 0.0 : min(size * uPixelRatio / -mv.z, 18.0 * uPixelRatio);
+  gl_PointSize = col.a < 0.5 ? 0.0 : min(size * uPixelRatio / -mv.z, uMaxSize * uPixelRatio);
 
   vCol = vec4(col.rgb, col.a * (0.35 + 0.65 * a) * (1.0 - t * 0.7));
   vGlow = wave + m * 0.3 + (1.0 - a) * 0.8;

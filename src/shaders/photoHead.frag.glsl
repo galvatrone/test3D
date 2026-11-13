@@ -1,11 +1,12 @@
 uniform float uIntro;
+uniform float uSoft;
 varying vec4 vCol;
 varying float vGlow;
 
 void main() {
   vec2 c = gl_PointCoord - 0.5;
   float d = length(c);
-  float alpha = smoothstep(0.5, 0.18, d) * vCol.a * uIntro;
+  float alpha = smoothstep(0.5, uSoft, d) * vCol.a * uIntro;
   if (alpha < 0.02) discard;
   float lum = dot(vCol.rgb, vec3(0.299, 0.587, 0.114));
   // bright pixels and disturbed particles pass 1.0 so bloom catches them

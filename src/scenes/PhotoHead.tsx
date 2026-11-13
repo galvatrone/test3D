@@ -82,7 +82,10 @@ export function PhotoHead() {
           uBurst: { value: new THREE.Vector2(0, 0) },
           uBurstAge: { value: 99 },
           // fewer, slightly larger particles on small grids; not fully compensated, so mobile reads lighter
-          uSize: { value: HEAD.pointSize * (isMobile ? 0.9 : 1) * Math.pow(230 / src.grid, 0.7) },
+          uSize: { value: HEAD.pointSize * (isMobile ? 0.7 : 1) * Math.pow(230 / src.grid, isMobile ? 0.35 : 0.7) },
+          // crisper particle edges on phones, where soft points blur into each other
+          uSoft: { value: isMobile ? 0.36 : 0.18 },
+          uMaxSize: { value: isMobile ? 9 : 18 },
           uPixelRatio: { value: Math.min(window.devicePixelRatio, QUALITY.dpr[1]) },
           uIntro: { value: prefersReducedMotion || DEBUG.pose !== null || DEBUG.assemble !== null ? 1 : 0 },
         },
