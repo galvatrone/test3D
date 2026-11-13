@@ -100,14 +100,26 @@ Nothing has to run on your own computer once it is published.
 **Open it locally without a server:** double-click `dist/index.html`. The build ships one classic
 script with images inlined, so it also works from `file://` (only the Google font needs internet).
 
-**GitHub Pages with automatic builds (recommended, free, keeps your domain).**
+**Where it lives now.** The live copy is https://www.oneix.ltd/test3D/, a built copy inside the
+oneix.ltd repository (`My-web.github.io/test3D/`). The `www.oneix.ltd` domain belongs to that project
+repository, not to a `galvatrone.github.io` user repository, so other repositories' Pages sites do
+not appear under the domain. To update the live copy after changes:
+
+```bash
+scripts/publish-to-oneix.sh        # build, copy into ../My-web.github.io/test3D, commit
+cd ../My-web.github.io && git push origin Main
+```
+
+The GitHub Actions workflow also publishes every push to https://galvatrone.github.io/test3D/,
+a mirror that needs no local build.
+
+**GitHub Pages with automatic builds.**
 `.github/workflows/deploy.yml` builds the site on GitHub's servers on every push to `main`.
 
 1. Create a repository named `test3D` on GitHub and push this project to it.
 2. In the repository: Settings → Pages → Source: **GitHub Actions**.
-3. Push. About a minute later the site is live. Because your user site
-   (`galvatrone/My-web.github.io`) already uses the custom domain `www.oneix.ltd`, a project
-   repository's Pages site appears under it: **https://www.oneix.ltd/test3D/**.
+3. Push. About a minute later the site is live at `https://<user>.github.io/test3D/`. It shows up
+   under a custom domain only if that domain is set on the `<user>.github.io` repository.
 
 **Vercel (alternative).** Import the repository at vercel.com, keep the detected preset (Vite,
 build `npm run build`, output `dist`). Every push deploys, every branch gets a preview link.

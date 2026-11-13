@@ -15,7 +15,8 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  # queue new runs instead of cancelling one that may already be publishing
+  cancel-in-progress: false
 
 jobs:
   build:
