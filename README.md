@@ -37,20 +37,22 @@ src/
   effects/              custom postprocessing Effect (barrel distortion + radial blur)
   ui/                   HTML over the canvas: nav, loader, scene text, contact form, glass, logo
   lib/                  face maps, scroll driver, device quality, shared flight state
-public/
-  face-depth.png        optional, see below
-  face-color.png        optional
-  projects/*.webp       gallery images
+src/assets/
+  portrait.jpg          the photo the particle portrait is made from
+  projects/*.webp       gallery images (named in data/projects.json)
   logo-mark.svg         shape used by the liquid metal logo
+public/
+  face-depth.png, face-color.png   only for HEAD.mode = 'cubes'
+  head-frames/          optional frame sequence for the portrait
 ```
 
 ## The portrait
 
-The hero is a particle portrait sampled from `public/portrait.jpg` (one particle per pixel of a
+The hero is a particle portrait sampled from `src/assets/portrait.jpg` (one particle per pixel of a
 230×230 grid on desktop, 150×150 on mobile). The background is removed by colour: the average of the
 four corners counts as backdrop, so a photo on a plain wall or studio background works best.
 
-- **Replace the photo:** overwrite `public/portrait.jpg` (square, head and shoulders, plain background).
+- **Replace the photo:** overwrite `src/assets/portrait.jpg` (square, head and shoulders, plain background).
 - **Frame-by-frame head turn:** film a few seconds of your head turning from profile to the front
   on a plain background, then run `scripts/video-to-frames.sh head-turn.mp4` (needs ffmpeg).
   It writes `public/head-frames/frame_0001.webp…` and prints a line to paste into `HEAD.sequence`
@@ -90,19 +92,30 @@ To check a frame without scrolling, open the dev server with `?p=0.5` (scroll po
 - Scene rail on the right: click a dot to fly there; arrow keys, Page Up/Down and Space jump scenes.
 - Light beam: press and hold to turn it up. Alley: click a neon sign to make it flicker.
 
-## Deploy to static hosting
+## Where to host it
 
-`vite.config.ts` uses `base: './'`, so the build runs from any folder.
+The site is static: after `npm run build` it is a folder of files (`dist/`) with no server code.
+Nothing has to run on your own computer once it is published.
 
-```bash
-npm run build
-```
+**Open it locally without a server:** double-click `dist/index.html`. The build ships one classic
+script with images inlined, so it also works from `file://` (only the Google font needs internet).
 
-Upload the contents of `dist/` anywhere that serves static files:
+**GitHub Pages with automatic builds (recommended, free, keeps your domain).**
+`.github/workflows/deploy.yml` builds the site on GitHub's servers on every push to `main`.
 
-- **GitHub Pages or a sub-folder of an existing site:** copy `dist/` to, for example,
-  `test3D/` in the site repo and push. It will load at `https://your-site/test3D/`.
-- **Vercel / Netlify / Cloudflare Pages:** build command `npm run build`, output directory `dist`.
+1. Create a repository named `test3D` on GitHub and push this project to it.
+2. In the repository: Settings → Pages → Source: **GitHub Actions**.
+3. Push. About a minute later the site is live. Because your user site
+   (`galvatrone/My-web.github.io`) already uses the custom domain `www.oneix.ltd`, a project
+   repository's Pages site appears under it: **https://www.oneix.ltd/test3D/**.
+
+**Vercel (alternative).** Import the repository at vercel.com, keep the detected preset (Vite,
+build `npm run build`, output `dist`). Every push deploys, every branch gets a preview link.
+Useful if you want previews; not needed just to host the site.
+
+**Copy into an existing site.** Run `npm run build` and copy `dist/` into any folder of a static
+site, for example `test3D/` in the oneix.ltd repository. This needs a rebuild on your machine after
+every change, which the two options above avoid.
 
 ## Performance and accessibility
 

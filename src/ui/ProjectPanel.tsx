@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import allProjects from '../data/projects.json'
 import { LiquidGlass } from './LiquidGlass'
+import { projectImage } from '../lib/assets'
 
 const featured = allProjects.filter((p) => p.featured)
 
@@ -48,7 +49,7 @@ export function ProjectPanel() {
     <div className="panel-backdrop" onClick={close}>
       <div className="panel-wrap" role="dialog" aria-modal="true" aria-labelledby="panel-title" onClick={(e) => e.stopPropagation()}>
         <LiquidGlass radius={28} className="panel">
-          {'image' in p && p.image && <img className="panel-img" src={import.meta.env.BASE_URL + p.image} alt="" />}
+          {'image' in p && p.image && <img className="panel-img" src={projectImage(p.image)} alt="" />}
           <div className="panel-body">
             <p className="panel-kind" style={{ color: tint }}>{'kind' in p ? p.kind : p.category}</p>
             <h2 id="panel-title">{p.title}</h2>

@@ -6,6 +6,7 @@ import allProjects from '../data/projects.json'
 import { FLIGHT } from '../config/flight'
 import { flight } from '../lib/flightState'
 import { QUALITY } from '../lib/quality'
+import { projectImage } from '../lib/assets'
 
 type Project = (typeof allProjects)[number]
 const featured = allProjects.filter((p) => p.featured) as (Project & { image: string; tint: string })[]
@@ -21,7 +22,7 @@ const H = 1.875
  * Hover tilts the card toward the pointer and lights its frame; click opens the project panel.
  */
 export function Gallery() {
-  const textures = useTexture(featured.map((p) => import.meta.env.BASE_URL + p.image))
+  const textures = useTexture(featured.map((p) => projectImage(p.image)))
   textures.forEach((t) => {
     t.colorSpace = THREE.SRGBColorSpace
     t.anisotropy = 4

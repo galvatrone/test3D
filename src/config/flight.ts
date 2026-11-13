@@ -97,13 +97,12 @@ export type SceneName = keyof typeof FLIGHT.anchors
 
 /**
  * The hero portrait.
- * mode 'photo': particles sampled from a photo or a frame sequence (default).
+ * mode 'photo': particles sampled from src/assets/portrait.jpg or a frame sequence (default).
  * mode 'cubes': the procedural cube head built from face-depth.png / face-color.png.
  * sequence: set after running scripts/video-to-frames.sh, e.g. { count: 48, pattern: 'frame_%04d.webp', fps: 24 }.
  */
 export const HEAD = {
   mode: 'photo' as 'photo' | 'cubes',
-  photo: 'portrait.jpg',
   sequence: null as null | { count: number; pattern: string; fps: number },
   /** Particle point size (world-scaled). */
   pointSize: 34,

@@ -10,6 +10,7 @@ import { flight } from '../lib/flightState'
 import { FLIGHT, HEAD } from '../config/flight'
 import { QUALITY, prefersReducedMotion, isMobile } from '../lib/quality'
 import { DEBUG } from '../lib/debug'
+import { ASSETS } from '../lib/assets'
 
 const smooth = (a: number, b: number, x: number) => {
   const t = Math.min(1, Math.max(0, (x - a) / (b - a)))
@@ -22,7 +23,7 @@ const smooth = (a: number, b: number, x: number) => {
  */
 export function PhotoHead() {
   const src = suspend(
-    () => loadPortrait(QUALITY.photoGrid, import.meta.env.BASE_URL, HEAD.photo, HEAD.sequence),
+    () => loadPortrait(QUALITY.photoGrid, import.meta.env.BASE_URL, ASSETS.portrait, HEAD.sequence),
     ['portrait', QUALITY.photoGrid],
   )
   const n = src.grid * src.grid

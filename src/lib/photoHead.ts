@@ -4,7 +4,7 @@
  * Source, in order of preference:
  *  1. a frame sequence in public/head-frames/, declared in config/flight.ts (HEAD.sequence);
  *     scripts/video-to-frames.sh makes one from a short video of the head turning
- *  2. a single photo, public/portrait.jpg
+ *  2. a single photo, src/assets/portrait.jpg (inlined into the build)
  * The background is removed by colour: the average of the four corners is treated as backdrop,
  * so a plain studio or wall background works best.
  */
@@ -84,16 +84,16 @@ export function makeSampler(grid: number) {
 
 export interface SequenceConfig { count: number; pattern: string; fps: number }
 
-export async function loadPortrait(grid: number, base: string, photo: string, sequence: SequenceConfig | null): Promise<PortraitSource> {
+export async function loadPortrait(grid: number, base: string, photoUrl: string, sequence: SequenceConfig | null): Promise<PortraitSource> {
   let frames: HTMLImageElement[] = []
   if (sequence) {
     const names = Array.from({ length: sequence.count }, (_, i) => sequence.pattern.replace('%04d', String(i + 1).padStart(4, '0')))
     frames = (await Promise.all(names.map((n) => loadImage(base + 'head-frames/' + n)))).filter(Boolean) as HTMLImageElement[]
   }
   if (!frames.length) {
-    const img = await loadImage(base + photo)
+    const img = await loadImage(photoUrl)
     if (img) frames = [img]
   }
-  if (!frames.length) throw new Error(`No portrait: add public/${photo} or a head-frames sequence`)
+  if (!frames.length) throw new Error('No portrait: add src/assets/portrait.jpg or a head-frames sequence')
   return { grid, frames, fps: sequence?.fps ?? 24, sample: makeSampler(grid) }
 }

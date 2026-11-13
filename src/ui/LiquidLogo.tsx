@@ -1,5 +1,6 @@
 import { LiquidMetal } from '@paper-design/shaders-react'
 import { prefersReducedMotion } from '../lib/quality'
+import { ASSETS } from '../lib/assets'
 
 /**
  * Liquid metal monogram. Same shader as paper-design/liquid-logo,
@@ -8,7 +9,7 @@ import { prefersReducedMotion } from '../lib/quality'
 export function LiquidLogo({ size = 40 }: { size?: number }) {
   return (
     <LiquidMetal
-      image={import.meta.env.BASE_URL + 'logo-mark.svg'}
+      image={ASSETS.logoMark}
       style={{ width: size, height: size }}
       colorBack="#00000000"
       colorTint="#c9d2ff"
