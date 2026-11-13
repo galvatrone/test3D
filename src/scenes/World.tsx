@@ -1,5 +1,7 @@
 import { Environment, Lightformer } from '@react-three/drei'
 import { Head } from './Head'
+import { PhotoHead } from './PhotoHead'
+import { HEAD } from '../config/flight'
 import { HeroGrid } from './HeroGrid'
 import { CameraRig } from './CameraRig'
 import { PostFX } from './PostFX'
@@ -7,6 +9,7 @@ import { Gallery } from './Gallery'
 import { Tunnel } from './Tunnel'
 import { Beam } from './Beam'
 import { Alley } from './Alley'
+import { Notes } from './Notes'
 import { Atmosphere } from './Atmosphere'
 import { prefersReducedMotion } from '../lib/quality'
 
@@ -27,13 +30,14 @@ export function World() {
         <Lightformer intensity={1} position={[5, -1, -2]} rotation-y={-Math.PI / 2} scale={[8, 2, 1]} color="#7d93ff" />
       </Environment>
 
-      <Head />
+      {HEAD.mode === 'photo' ? <PhotoHead /> : <Head />}
       {!prefersReducedMotion && (
         <>
           <HeroGrid />
           <Gallery />
           <Tunnel />
           <Beam />
+          <Notes />
           <Alley />
         </>
       )}

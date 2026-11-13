@@ -1,5 +1,5 @@
 import { useMemo, useRef } from 'react'
-import { useFrame } from '@react-three/fiber'
+import { useFrame, useThree } from '@react-three/fiber'
 import { MeshReflectorMaterial } from '@react-three/drei'
 import * as THREE from 'three'
 import { FLIGHT } from '../config/flight'
@@ -10,6 +10,8 @@ export function Alley() {
   const { from, to } = FLIGHT.scenes.alley
   const signs = useRef<THREE.Group>(null!)
   const lite = QUALITY.post === 'lite'
+  const kicked = useRef<number[]>([])
+  const clock = useThree((s) => s.clock)
 
   const blocks = useMemo(() => {
     const out: { pos: [number, number, number]; size: [number, number, number]; shade: number }[] = []
@@ -47,7 +49,9 @@ export function Alley() {
       const s = signList[i]
       const mat = (m as THREE.Mesh).material as THREE.MeshBasicMaterial
       // a few signs stutter like old neon
-      const on = s.flicker > 0.8 ? (Math.sin(t * 23 + i) > -0.6 ? 1 : 0.25) : 1
+      const since = t - (kicked.current[i] ?? -99)
+      const kick = since < 1.4 ? (Math.sin(since * 60) > 0 ? 1.6 : 0.1) : 1
+      const on = (s.flicker > 0.8 ? (Math.sin(t * 23 + i) > -0.6 ? 1 : 0.25) : 1) * kick
       mat.color.setRGB((s.hot ? 4 : 2.2) * on, (s.hot ? 0.25 : 0.5) * on, (s.hot ? 0.35 : 0.9) * on)
     })
   })
@@ -62,7 +66,13 @@ export function Alley() {
       ))}
       <group ref={signs}>
         {signList.map((s, i) => (
-          <mesh key={i} position={s.pos}>
+          <mesh
+            key={i}
+            position={s.pos}
+            onClick={(e) => { e.stopPropagation(); kicked.current[i] = clock.elapsedTime }}
+            onPointerOver={() => { document.body.style.cursor = 'pointer' }}
+            onPointerOut={() => { document.body.style.cursor = '' }}
+          >
             <boxGeometry args={s.size} />
             <meshBasicMaterial toneMapped={false} />
           </mesh>

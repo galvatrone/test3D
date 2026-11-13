@@ -8,16 +8,17 @@ import { FLIGHT } from '../config/flight'
  * clear ink at the head, sodium haze in the tunnel, blue mist at the beam, red smog in the alley.
  */
 const STOPS = [
-  { z: 8, color: '#06070d', near: 12, far: 23 },
+  { z: 8, color: '#06070d', near: 9, far: 19 },
   { z: FLIGHT.scenes.gallery.z, color: '#07080f', near: 8, far: 40 },
   { z: FLIGHT.scenes.tunnel.from - 6, color: '#120b05', near: 3, far: 26 },
   { z: FLIGHT.scenes.beam.z, color: '#060915', near: 2, far: 22 },
+  { z: FLIGHT.scenes.notes.z, color: '#140f0a', near: 3, far: 24 },
   { z: FLIGHT.scenes.alley.from - 8, color: '#1a0306', near: 2, far: 26 },
 ]
 
 export function Atmosphere() {
   const { scene, camera } = useThree()
-  const fog = useMemo(() => new THREE.Fog('#06070d', 12, 23), [])
+  const fog = useMemo(() => new THREE.Fog('#06070d', 9, 19), [])
   const cols = useMemo(() => STOPS.map((s) => new THREE.Color(s.color)), [])
   const bg = useMemo(() => new THREE.Color(), [])
   scene.fog = fog

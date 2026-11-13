@@ -2,17 +2,98 @@
   "name": "Mihail Charilaou",
   "role": "Engineer building autonomous drones, 3D web and offline AI",
   "location": "Nicosia, Cyprus",
-  "intro": "Scroll to fly through recent work. The head is built from cubes, one for each pixel of a depth map.",
+  "intro": "Scroll to fly through my work. Click the portrait to send a wave through it.",
   "email": "michaelok929@gmail.com",
   "links": [
-    { "label": "Website", "href": "https://www.oneix.ltd" },
-    { "label": "GitHub", "href": "https://github.com/galvatrone" },
-    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/mihail-charilaou-b39586351" }
+    {
+      "label": "Website",
+      "href": "https://www.oneix.ltd"
+    },
+    {
+      "label": "GitHub",
+      "href": "https://github.com/galvatrone"
+    },
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/mihail-charilaou-b39586351"
+    }
   ],
   "sections": {
-    "gallery": { "title": "Selected work", "text": "Three projects, each with a live prototype you can open." },
-    "tunnel": { "title": "Built for the field", "text": "Most of my work runs on drones, edge boards and laptops without a network, so it has to be fast and keep working when conditions are bad." },
-    "beam": { "title": "From sketch to a working prototype", "text": "I take an idea from a whiteboard to something you can open, fly or test, usually in weeks rather than months." },
-    "contact": { "title": "Let's talk about your next project", "text": "Tell me what you are building and I will reply within two working days." }
+    "gallery": {
+      "title": "Selected work",
+      "text": "Six projects from AI to the Moon, and the full list below."
+    },
+    "tunnel": {
+      "title": "Built for the field",
+      "text": "Most of my work runs on drones, edge boards and laptops without a network, so it has to be fast and keep working when conditions are bad. These are the tools I reach for."
+    },
+    "beam": {
+      "title": "From sketch to a working prototype",
+      "text": "I take an idea from a whiteboard to something you can open, fly or test, usually in weeks rather than months."
+    },
+    "contact": {
+      "title": "Let's talk about your next project",
+      "text": "Tell me what you are building and I will reply within two working days."
+    }
+  },
+  "stack": [
+    "C++",
+    "Rust",
+    "Python",
+    "TypeScript",
+    "Three.js",
+    "Arduino",
+    "Linux",
+    "Offline ML"
+  ],
+  "about": {
+    "title": "About",
+    "text": "Software, AI and systems engineering student at the University of Nicosia, and a developer at Oneix Ltd. I like projects where the whole path can be measured: from raw data to a result on screen, from a message sent to a message acknowledged.",
+    "facts": [
+      {
+        "value": "Robotics team",
+        "label": "Founded and lead a student team on autonomous drones"
+      },
+      {
+        "value": "RU · EL · EN",
+        "label": "Russian and Greek natively, English at work"
+      },
+      {
+        "value": "Zenodo 2026",
+        "label": "Technical note on the NASA exoplanet classifier"
+      }
+    ],
+    "href": "https://www.oneix.ltd/about.html"
+  },
+  "blog": {
+    "title": "Notes",
+    "text": "I write down what worked and what did not.",
+    "href": "https://www.oneix.ltd/blog.html",
+    "posts": [
+      {
+        "title": "What 71% accuracy taught me",
+        "date": "27 Oct 2026",
+        "summary": "Writing down the limits of a small classifier before anyone else finds them: leakage, missing values, missing baselines.",
+        "href": "https://www.oneix.ltd/blog-honest-evaluation.html"
+      },
+      {
+        "title": "LELP: an electromagnetic launcher for the Moon",
+        "date": "27 Oct 2026",
+        "summary": "A permanent lunar platform that launches return capsules, with a back-of-envelope check of energy and acceleration.",
+        "href": "https://www.oneix.ltd/blog-lelp.html"
+      },
+      {
+        "title": "Zhelezyaka: what a local JARVIS needs",
+        "date": "27 Oct 2026",
+        "summary": "Memory of decisions, specialised agents, a model router and a permission layer, mostly on your own computer.",
+        "href": "https://www.oneix.ltd/blog-zhelezyaka.html"
+      },
+      {
+        "title": "A neural network from scratch for NASA data",
+        "date": "26 Oct 2026",
+        "summary": "A three-class exoplanet classifier: NASA Exoplanet Archive tables, a C++ network without frameworks, a held-out evaluation.",
+        "href": "https://www.oneix.ltd/blog-nasa-exoplanet-ai.html"
+      }
+    ]
   }
 }

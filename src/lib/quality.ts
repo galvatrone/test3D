@@ -11,5 +11,5 @@ export const isMobile = coarse || narrow
  * about 55% of grid cells fall inside the head mask.
  */
 export const QUALITY = isMobile
-  ? { faceGrid: 202, dpr: [1, 1.5] as [number, number], post: 'lite' as const, tunnelBoxes: 900 }
-  : { faceGrid: 264, dpr: [1, 2] as [number, number], post: 'full' as const, tunnelBoxes: 2200 }
+  ? { faceGrid: 202, photoGrid: 150, dpr: [1, 1.5] as [number, number], post: 'lite' as const, tunnelBoxes: 900 }
+  : { faceGrid: 264, photoGrid: 230, dpr: [1, 2] as [number, number], post: 'full' as const, tunnelBoxes: 2200 }

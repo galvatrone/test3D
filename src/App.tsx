@@ -4,6 +4,8 @@ import { World } from './scenes/World'
 import { Loader } from './ui/Loader'
 import { Overlay } from './ui/Overlay'
 import { Nav } from './ui/Nav'
+import { SceneRail } from './ui/SceneRail'
+import { ProjectPanel } from './ui/ProjectPanel'
 import { QUALITY, prefersReducedMotion } from './lib/quality'
 import { useFlightScroll } from './lib/useFlightScroll'
 import { flight } from './lib/flightState'
@@ -42,6 +44,8 @@ export default function App() {
         </Canvas>
       </div>
       <Nav />
+      <SceneRail />
+      <ProjectPanel />
       <Overlay entered={entered} />
       <Loader sceneReady={sceneReady} onDone={enter} />
     </>
