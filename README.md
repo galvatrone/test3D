@@ -59,8 +59,7 @@ four corners counts as backdrop, so a photo on a plain wall or studio background
   `public/face-depth.png` (white = closest) and `public/face-color.png`. Both shipped PNGs are the
   procedural stand-in exported to images (`window.__exportFaceMaps(512)` in dev).
 
-Interaction: particles fly in and assemble on load, the area under the pointer comes forward and
-grows, a click sends a ring wave through the portrait, and scrolling scatters it.
+Interaction: particles fly in and assemble on load, particles around the pointer scatter outward, a click sends a ring wave through the portrait, and scrolling scatters it.
 
 ## Add a scene
 
@@ -85,7 +84,7 @@ To check a frame without scrolling, open the dev server with `?p=0.5` (scroll po
 
 ## Interaction
 
-- Portrait: hover lifts it toward you, click sends a wave, scroll scatters it.
+- Portrait: hover scatters the particles around the pointer, click sends a wave, scroll scatters it.
 - Gallery: hover tilts a card toward the pointer, click opens the project panel
   (← and → switch projects, Esc closes).
 - Scene rail on the right: click a dot to fly there; arrow keys, Page Up/Down and Space jump scenes.

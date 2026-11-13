@@ -37,10 +37,10 @@ void main() {
   p.z += sin(uTime * 1.3 + target.y * 5.0 + aRand * 6.2831) * 0.015;
 
   // pointer pushes particles aside and toward the viewer
-  // pointer lifts the photo toward the viewer like a lens, without smearing it sideways
+  // pointer scatters the particles around it outward, in the plane of the photo
   vec2 dm = p.xy - uMouse;
-  float m = exp(-dot(dm, dm) * 3.5) * uMouseStrength;
-  p.z += m * 1.0;
+  float m = exp(-dot(dm, dm) * 3.2) * uMouseStrength;
+  p.xy += normalize(dm + 1e-4) * m * (0.38 + aRand * 0.3);
 
   // click: a ring wave that runs out from the click point and fades
   vec2 db = p.xy - uBurst;
@@ -57,9 +57,9 @@ void main() {
 
   vec4 mv = modelViewMatrix * vec4(p, 1.0);
   gl_Position = projectionMatrix * mv;
-  float size = uSize * (0.75 + aRand * 0.5) * (1.0 + wave * 1.5 + (1.0 - a) * 0.6 + m * 0.8);
+  float size = uSize * (0.75 + aRand * 0.5) * (1.0 + wave * 1.5 + (1.0 - a) * 0.6);
   gl_PointSize = col.a < 0.5 ? 0.0 : min(size * uPixelRatio / -mv.z, 18.0 * uPixelRatio);
 
   vCol = vec4(col.rgb, col.a * (0.35 + 0.65 * a) * (1.0 - t * 0.7));
-  vGlow = wave + m * 0.25 + (1.0 - a) * 0.8;
+  vGlow = wave + m * 0.3 + (1.0 - a) * 0.8;
 }
