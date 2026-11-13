@@ -383,3 +383,15 @@ button.project:hover .project-title { text-decoration: underline; text-underline
   .experience li { grid-template-columns: 1fr; }
   .exp-when { grid-row: auto; padding-top: 0; }
 }
+
+/* loop back flash */
+.loop-flash {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at 50% 50%, #ffd1d6 0%, #ff2f43 35%, #3a0208 75%, #06070d 100%);
+}
+.loop-flash.is-in { opacity: 1; transition: opacity 0.6s cubic-bezier(0.55, 0, 0.9, 0.4); }
+.loop-flash.is-out { opacity: 0; transition: opacity 1s var(--ease); }

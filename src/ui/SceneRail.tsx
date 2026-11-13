@@ -3,7 +3,7 @@ import { FLIGHT, type SceneName } from '../config/flight'
 import { flight } from '../lib/flightState'
 import { prefersReducedMotion } from '../lib/quality'
 
-const SCENES: { key: SceneName; label: string }[] = [
+const SCENES: { key: Exclude<SceneName, 'outro'>; label: string }[] = [
   { key: 'hero', label: 'Portrait' },
   { key: 'about', label: 'About' },
   { key: 'gallery', label: 'Work' },
@@ -13,7 +13,7 @@ const SCENES: { key: SceneName; label: string }[] = [
   { key: 'contact', label: 'Contact' },
 ]
 
-export function goToScene(key: SceneName) {
+export function goToScene(key: Exclude<SceneName, 'outro'>) {
   const h = document.documentElement.scrollHeight - window.innerHeight
   if (prefersReducedMotion) {
     document.getElementById(`${key === 'hero' ? 'hero' : key}-title`)?.scrollIntoView()

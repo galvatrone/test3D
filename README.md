@@ -90,7 +90,16 @@ To check a frame without scrolling, open the dev server with `?p=0.5` (scroll po
 - Gallery: hover tilts a card toward the pointer, click opens the project panel
   (← and → switch projects, Esc closes).
 - Scene rail on the right: click a dot to fly there; arrow keys, Page Up/Down and Space jump scenes.
-- Light beam: press and hold to turn it up. Alley: click a neon sign to make it flicker.
+- Light beam: scroll to build the drone, press and hold to fly it. Alley: click a neon sign to make it flicker.
+- End of the page: the camera goes through the neon door, the screen flashes red, the page jumps
+  back to the top and the portrait assembles again (`ui/LoopBack.tsx`, anchor `outro`).
+
+## Sharing
+
+- `public/og.jpg` (1200×630) and the Open Graph / Twitter tags in `index.html` give the link a
+  preview card in Telegram, LinkedIn, X and Slack. The tags use absolute URLs on
+  `www.oneix.ltd/test3D/`; change them if the site moves.
+- `marketing/teaser.mp4` is a 10-second flight through the whole site for posts. It is not deployed.
 
 ## Where to host it
 

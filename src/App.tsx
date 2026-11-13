@@ -6,6 +6,7 @@ import { Overlay } from './ui/Overlay'
 import { Nav } from './ui/Nav'
 import { SceneRail } from './ui/SceneRail'
 import { ProjectPanel } from './ui/ProjectPanel'
+import { LoopBack } from './ui/LoopBack'
 import { QUALITY, prefersReducedMotion } from './lib/quality'
 import { useFlightScroll } from './lib/useFlightScroll'
 import { flight } from './lib/flightState'
@@ -46,6 +47,7 @@ export default function App() {
       <Nav />
       <SceneRail />
       <ProjectPanel />
+      <LoopBack />
       <Overlay entered={entered} />
       <Loader sceneReady={sceneReady} onDone={enter} />
     </>

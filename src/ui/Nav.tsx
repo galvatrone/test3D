@@ -5,7 +5,7 @@ import { type SceneName } from '../config/flight'
 import { goToScene } from './SceneRail'
 import { prefersReducedMotion } from '../lib/quality'
 
-const go = (scene: SceneName) => (e: React.MouseEvent) => {
+const go = (scene: Exclude<SceneName, 'outro'>) => (e: React.MouseEvent) => {
   if (prefersReducedMotion) return
   e.preventDefault()
   goToScene(scene)

@@ -41,10 +41,13 @@ export function useFlightScroll(enabled: boolean) {
 
     const goTo = (e: Event) => lenis.scrollTo((e as CustomEvent<string>).detail, { duration: 2.2 })
     window.addEventListener('flight:goto', goTo)
+    const jump = (e: Event) => lenis.scrollTo((e as CustomEvent<number>).detail, { immediate: true, force: true })
+    window.addEventListener('flight:jump', jump)
 
     return () => {
       window.removeEventListener('pointermove', onPointer)
       window.removeEventListener('flight:goto', goTo)
+      window.removeEventListener('flight:jump', jump)
       st.kill()
       gsap.ticker.remove(raf)
       lenis.destroy()

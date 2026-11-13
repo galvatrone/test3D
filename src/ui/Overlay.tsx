@@ -128,6 +128,7 @@ export function Overlay({ entered }: { entered: boolean }) {
         <div className="contact-copy">
           <h2 id="contact-title">{s.contact.title}</h2>
           <p>{s.contact.text}</p>
+          <p className="hint">Keep scrolling to go through the door and start again</p>
           <ul className="links">
             {site.links.map((l) => (
               <li key={l.href}>

@@ -115,7 +115,18 @@ export function PhotoHead() {
     }
     if (flight.introStarted) start()
     else window.addEventListener('flight:intro', start, { once: true })
-    return () => window.removeEventListener('flight:intro', start)
+    // after the loop back from the end of the flight, the particles fly in again
+    const again = () => {
+      gsap.killTweensOf(material.uniforms.uAssemble)
+      material.uniforms.uAssemble.value = 0
+      gsap.to(material.uniforms.uAssemble, { value: 1, duration: FLIGHT.intro.duration + 0.4, ease: 'power2.inOut', delay: 0.35 })
+      if (src.frames.length > 1) seq.current = { index: 0, playing: true, t: 0 }
+    }
+    window.addEventListener('flight:reassemble', again)
+    return () => {
+      window.removeEventListener('flight:intro', start)
+      window.removeEventListener('flight:reassemble', again)
+    }
   }, [material, src, n])
 
   // click on the canvas near the portrait: ring wave from the click point

@@ -29,6 +29,9 @@ export const FLIGHT = {
     [-9, 0.6, -99],
     [-2, 0.4, -106],
     [0, 0.35, -114],
+    [0, 0.4, -124],
+    [0, 0.4, -131],
+    [0, 0.4, -136],
   ] as Vec3[],
 
   /** How far ahead on the curve the camera looks (curve units). */
@@ -45,7 +48,9 @@ export const FLIGHT = {
     tunnel: 0.44,
     beam: 0.59,
     blog: 0.76,
-    contact: 1,
+    contact: 0.92,
+    /** the end of the page: through the neon door, then the flight loops back to the portrait */
+    outro: 1,
   },
 
   /**
@@ -60,6 +65,7 @@ export const FLIGHT = {
     beam: [0, 0.45, -75],
     blog: [-12, 0.8, -92],
     contact: [0, 0.35, -114],
+    outro: [0, 0.4, -136],
   } as Record<string, Vec3>,
 
   /** World placement of each scene. */
