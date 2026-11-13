@@ -25,7 +25,7 @@
     },
     "tunnel": {
       "title": "Built for the field",
-      "text": "Most of my work runs on drones, edge boards and laptops without a network, so it has to be fast and keep working when conditions are bad. These are the tools I reach for."
+      "text": "Most of my work runs on drones, edge boards and laptops without a network, so it has to be fast and keep working when conditions are bad."
     },
     "beam": {
       "title": "From sketch to a working prototype",
@@ -95,5 +95,31 @@
         "href": "https://www.oneix.ltd/blog-nasa-exoplanet-ai.html"
       }
     ]
-  }
+  },
+  "experience": [
+    {
+      "when": "Feb 2024 – now",
+      "role": "Software Developer",
+      "org": "Oneix Ltd, Nicosia",
+      "text": "Software, applied AI and web projects in Python, C++, JavaScript and React, including oneix.ltd and the Oneix Store."
+    },
+    {
+      "when": "Jul – Aug 2026",
+      "role": "Engineering Intern",
+      "org": "Cyprus Space Exploration Organisation",
+      "text": "Built and tested a secure telemetry data-transfer system in C++ and Rust; worked on exoplanet classification."
+    },
+    {
+      "when": "Sep 2023 – May 2024",
+      "role": "President & Lead Engineer",
+      "org": "Robotics and Innovation Technology Club, UNIC",
+      "text": "Founded and led a student team on autonomous drones and embedded systems; ran workshops in Python, C++ and Arduino."
+    },
+    {
+      "when": "Sep 2023 – Jun 2028",
+      "role": "BSc Computer Science",
+      "org": "University of Nicosia",
+      "text": "Studies alongside project work in AI, systems programming and robotics."
+    }
+  ]
 }

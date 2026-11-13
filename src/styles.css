@@ -194,7 +194,15 @@ a { color: inherit; }
 .loader-count, .loader-label { position: relative; }
 
 /* scene text placement: each block takes its own side so the scenes stay visible */
-.scene-text.tunnel { display: grid; justify-items: end; text-align: right; }
+.scene-text.tunnel {
+  display: grid;
+  justify-items: end;
+  align-content: start;
+  text-align: right;
+  padding-top: 14vh;
+  /* keep clear of the scene rail on the right */
+  padding-right: calc(clamp(20px, 5vw, 72px) + 96px);
+}
 .scene-text.tunnel > p { justify-self: end; }
 .scene-text.beam { padding-top: 46vh; }
 .scene-text.contact {
@@ -283,7 +291,7 @@ button.project:hover .project-title { text-decoration: underline; text-underline
 .ap-meta { font-size: 13px; color: var(--bone-3); }
 .all-projects a:hover .ap-title { text-decoration: underline; text-underline-offset: 3px; }
 
-.stack { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; max-width: 30rem; }
+.stack { list-style: none; margin: 20px 0 0; padding: 0; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 8px; }
 .stack li { font-size: 14px; padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(255, 181, 71, 0.35); color: #ffd79a; background: rgba(18, 11, 5, 0.5); }
 
 /* scene rail */
@@ -326,7 +334,6 @@ button.project:hover .project-title { text-decoration: underline; text-underline
 
 @media (max-width: 720px) {
   .rail { display: none; }
-  .stack { justify-content: flex-start; }
   .panel-body { padding: 18px 18px 20px; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -358,4 +365,21 @@ button.project:hover .project-title { text-decoration: underline; text-underline
   .posts { grid-template-columns: 1fr; }
   .facts div { grid-template-columns: 1fr; gap: 2px; }
   .nav-links a { padding: 8px 9px; font-size: 14px; }
+}
+
+/* experience card in the tunnel */
+.exp-card { margin-top: 28px; width: min(500px, 100%); text-align: left; background: rgba(18, 11, 5, 0.45); }
+.exp-inner { padding: 22px 24px 24px; }
+.exp-inner h3 { margin: 0 0 12px; font-size: 15px; font-weight: 500; color: #ffd79a; }
+.experience { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.experience li { display: grid; grid-template-columns: 8.5rem 1fr; column-gap: 16px; row-gap: 2px; padding-top: 12px; border-top: 1px solid rgba(255, 215, 154, 0.14); }
+.experience li:first-child { border-top: 0; padding-top: 0; }
+.exp-when { grid-row: 1 / span 3; font-size: 13px; color: var(--bone-3); font-variant-numeric: tabular-nums; padding-top: 3px; }
+.exp-role { font-size: 17px; font-weight: 540; line-height: 1.2; font-variation-settings: 'wdth' 86, 'opsz' 24; }
+.exp-org { font-size: 14px; color: var(--bone-2); }
+.exp-text { font-size: 14px; line-height: 1.45; color: var(--bone-3); }
+@media (max-width: 720px) {
+  .scene-text.tunnel { padding-right: clamp(20px, 5vw, 72px); justify-items: start; text-align: left; }
+  .experience li { grid-template-columns: 1fr; }
+  .exp-when { grid-row: auto; padding-top: 0; }
 }

@@ -10,6 +10,7 @@ import { Tunnel } from './Tunnel'
 import { Beam } from './Beam'
 import { Alley } from './Alley'
 import { Notes } from './Notes'
+import { Train } from './Train'
 import { Atmosphere } from './Atmosphere'
 import { prefersReducedMotion } from '../lib/quality'
 
@@ -38,6 +39,7 @@ export function World() {
           <Tunnel />
           <Beam />
           <Notes />
+          <Train />
           <Alley />
         </>
       )}

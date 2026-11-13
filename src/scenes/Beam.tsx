@@ -4,6 +4,7 @@ import * as THREE from 'three'
 import vert from '../shaders/beam.vert.glsl?raw'
 import frag from '../shaders/beam.frag.glsl?raw'
 import { FLIGHT } from '../config/flight'
+import { BlueprintDrone } from './BlueprintDrone'
 
 const HEIGHT = 9
 
@@ -14,6 +15,7 @@ export function Beam() {
   const spot = useRef<THREE.SpotLight>(null!)
   const { gl, camera } = useThree()
   const hold = useRef({ down: false, v: 0, spin: 0 })
+  const boost = useRef(0)
 
   // press and hold near the beam: the light swells and the dust speeds up
   useEffect(() => {
@@ -68,6 +70,7 @@ export function Beam() {
     dust.current.rotation.y = h.spin
     dust.current.position.y = Math.sin(t * 0.3) * 0.15
     if (spot.current) spot.current.intensity = 180 + h.v * 420
+    boost.current = h.v
   })
 
   // the cone shader ignores fog, so only show the beam once the camera is close
@@ -79,6 +82,10 @@ export function Beam() {
       <mesh material={material}>
         <cylinderGeometry args={[0.35, 2.2, HEIGHT, 48, 1, true]} />
       </mesh>
+      {/* the prototype taking shape inside the light */}
+      <group position={[0, -1.2, 0]}>
+        <BlueprintDrone boost={boost} />
+      </group>
       <points ref={dust} geometry={dustGeo}>
         <pointsMaterial size={0.035} color={[2.4, 2.6, 3.2]} transparent opacity={0.7} depthWrite={false} toneMapped={false} />
       </points>

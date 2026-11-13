@@ -79,15 +79,30 @@ export function Overlay({ entered }: { entered: boolean }) {
       <section className="scene-text tunnel" style={at(FLIGHT.anchors.tunnel)} aria-labelledby="tunnel-title">
         <h2 id="tunnel-title">{s.tunnel.title}</h2>
         <p>{s.tunnel.text}</p>
-        <ul className="stack">
-          {site.stack.map((x) => <li key={x}>{x}</li>)}
-        </ul>
+        <LiquidGlass radius={24} className="exp-card">
+          <div className="exp-inner">
+            <h3>Experience</h3>
+            <ol className="experience">
+              {site.experience.map((e) => (
+                <li key={e.role}>
+                  <span className="exp-when">{e.when}</span>
+                  <span className="exp-role">{e.role}</span>
+                  <span className="exp-org">{e.org}</span>
+                  <span className="exp-text">{e.text}</span>
+                </li>
+              ))}
+            </ol>
+            <ul className="stack" aria-label="Tools">
+              {site.stack.map((x) => <li key={x}>{x}</li>)}
+            </ul>
+          </div>
+        </LiquidGlass>
       </section>
 
       <section className="scene-text beam" style={at(FLIGHT.anchors.beam)} aria-labelledby="beam-title">
         <h2 id="beam-title">{s.beam.title}</h2>
         <p>{s.beam.text}</p>
-        <p className="hint">Press and hold to turn the light up</p>
+        <p className="hint">Scroll to build the drone, then press and hold to fly it</p>
       </section>
 
       <section className="scene-text blog" style={at(FLIGHT.anchors.blog)} aria-labelledby="blog-title">

@@ -16,6 +16,11 @@ export function useFlightScroll(enabled: boolean) {
       flight.pointer.y = -((e.clientY / window.innerHeight) * 2 - 1)
     }
     window.addEventListener('pointermove', onPointer, { passive: true })
+    const onDown = (e: PointerEvent) => { flight.pressed = true; onPointer(e) }
+    const onUp = () => { flight.pressed = false }
+    window.addEventListener('pointerdown', onDown, { passive: true })
+    window.addEventListener('pointerup', onUp, { passive: true })
+    window.addEventListener('pointercancel', onUp, { passive: true })
     if (!enabled || prefersReducedMotion) return () => window.removeEventListener('pointermove', onPointer)
 
     const lenis = new Lenis({ lerp: FLIGHT.lenis.lerp, wheelMultiplier: FLIGHT.lenis.wheelMultiplier })

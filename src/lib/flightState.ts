@@ -11,6 +11,8 @@ export const flight = {
   distortion: 0,
   /** Pointer in normalised device coords (-1..1). */
   pointer: { x: 0, y: 0 },
+  /** True while a finger or mouse button is down (touch screens have no hover). */
+  pressed: false,
   /** True once the loader is gone and the intro turn has started. */
   introStarted: false,
 }

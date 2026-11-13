@@ -81,7 +81,8 @@ export function PhotoHead() {
           uMouseStrength: { value: 0 },
           uBurst: { value: new THREE.Vector2(0, 0) },
           uBurstAge: { value: 99 },
-          uSize: { value: HEAD.pointSize * (isMobile ? 0.9 : 1) * (230 / src.grid) },
+          // fewer, slightly larger particles on small grids; not fully compensated, so mobile reads lighter
+          uSize: { value: HEAD.pointSize * (isMobile ? 0.9 : 1) * Math.pow(230 / src.grid, 0.7) },
           uPixelRatio: { value: Math.min(window.devicePixelRatio, QUALITY.dpr[1]) },
           uIntro: { value: prefersReducedMotion || DEBUG.pose !== null || DEBUG.assemble !== null ? 1 : 0 },
         },
@@ -168,7 +169,9 @@ export function PhotoHead() {
       m.x += (hitP.x - m.x) * Math.min(1, dt * 14)
       m.y += (hitP.y - m.y) * Math.min(1, dt * 14)
     }
-    m.s += ((prefersReducedMotion ? 0 : 1) - m.s) * Math.min(1, dt * 2)
+    // touch screens have no hover: scatter only while a finger is on the screen
+    const want = prefersReducedMotion ? 0 : isMobile ? (flight.pressed ? 1 : 0) : 1
+    m.s += (want - m.s) * Math.min(1, dt * (want ? 4 : 2))
     u.uMouse.value.set(m.x, m.y)
     u.uMouseStrength.value = m.s * (1 - u.uProgress.value) * u.uAssemble.value
 
